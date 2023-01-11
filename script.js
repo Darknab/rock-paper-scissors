@@ -10,28 +10,12 @@ function getComputerChoice() {
 //create a function that asks for a user selection and checks if the selection is valid
 let userSelection;
 function getUserChoice() {
-    let validSelection = false; 
-    do {
-        userSelection = prompt("please enter your selection","");
-        if (userSelection === null) {
-            console.log("cancelled!");
-            return userSelection;
-        }
-        userSelection = userSelection.toLowerCase();
-        //check if selection is valid
-        switch (userSelection) {
-            case "rock" :
-            case "paper" :
-            case "scissors" :
-                validSelection = true;
-                return userSelection;          
-            break;
-            default:
-                alert("seriously?");
-        }
-    } 
-    while (validSelection === false) ;
-
+    const buttons = document.querySelectorAll(".userChoice");
+buttons.forEach((btn) =>{
+    btn.addEventListener("click", () => {
+        userSelection = btn.textContent;
+    })
+})
 }
 // play 1 round
 let userScore = 0;
@@ -88,13 +72,19 @@ function playRound() {
     
 }
 
-//repeat 5 rounds
-for (i = 0; i < 5; i++) {
-    console.log("round: " + (i + 1));
+//Play a game until one player reach a score of 5
+function playGame() {
+let i = 1;
+let gameOver = false;
+do {
+    console.log("round: " + i);
     playRound();
     console.log("your score is: " + userScore);
     console.log("computer score is: " + computerScore);
+    i++;
+    gameOver = (userScore === 5 || computerScore === 5);
 }
+while (gameOver === false);
 
 //show results
 
@@ -107,6 +97,17 @@ else if (userScore < computerScore) {
 else {
     console.log("draw, you both rock!");
 }
+}
+const user = document.querySelector(".user > .score");
+const uScore = document.createElement("p");
+user.appendChild(uScore);
+uScore.textContent = userScore; 
+
+
+const computer = document.querySelector(".computer > .score");
+const cScore = document.createElement("p");
+computer.appendChild(cScore);
+cScore.textContent = computerScore; 
 
 
 

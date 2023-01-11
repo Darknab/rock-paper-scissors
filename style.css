@@ -1,0 +1,55 @@
+body {
+    background-color: rgb(25, 23, 23);
+}
+
+.scores {
+    width: 400px;
+    height: 300px;
+    background-color: rgb(236, 215, 19);
+    margin: auto;
+    padding: 100px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    margin:40px auto;
+    width: 600px;   
+}
+
+button {
+    width: 150px;
+    height: 50px;
+    background-color: aquamarine;
+    border-radius: 10px;
+    box-shadow: 2px 4px rgb(236, 215, 19);
+    margin: auto;
+}
+
+.user, .computer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score {
+    background-color: whitesmoke;
+    height: 200px;
+    width: 130px;
+    border-radius: 10px;
+    
+}
+
+.score > p {
+    color: red;
+    font-weight: 900;
+    font-size: 180px;
+    margin-top: 0px;
+    text-align: center;
+    width: 100%;
+}
