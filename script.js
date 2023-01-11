@@ -9,20 +9,21 @@ function getComputerChoice() {
 }
 //create a function that asks for a user selection and checks if the selection is valid
 let userSelection;
-function getUserChoice() {
+/*function getUserChoice() {
     const buttons = document.querySelectorAll(".userChoice");
-buttons.forEach((btn) =>{
+    buttons.forEach((btn) =>{
     btn.addEventListener("click", () => {
         userSelection = btn.textContent;
+        playRound();
+        })
     })
-})
-}
+}*/
 // play 1 round
 let userScore = 0;
 let computerScore = 0;
 function playRound() {
         getComputerChoice();
-        getUserChoice();
+        /*getUserChoice();*/
         switch (userSelection) {
             case null :
                 computerScore += 1;
@@ -68,23 +69,26 @@ function playRound() {
                    }
                 break;         
         }
-
+        user.appendChild(uScore);
+        uScore.textContent = userScore; 
+        computer.appendChild(cScore);
+        cScore.textContent = computerScore;     
     
 }
 
 //Play a game until one player reach a score of 5
 function playGame() {
-let i = 1;
-let gameOver = false;
-do {
-    console.log("round: " + i);
-    playRound();
-    console.log("your score is: " + userScore);
-    console.log("computer score is: " + computerScore);
-    i++;
-    gameOver = (userScore === 5 || computerScore === 5);
-}
-while (gameOver === false);
+    const buttons = document.querySelectorAll(".userChoice");
+    buttons.forEach((btn) =>{
+    btn.addEventListener("click", () => {
+        userSelection = btn.textContent;
+        playRound();
+        })
+    })
+    if (userScore === 5 || computerScore ===5 ) {
+        gameOver();
+        return;
+    }
 
 //show results
 
@@ -109,5 +113,12 @@ const cScore = document.createElement("p");
 computer.appendChild(cScore);
 cScore.textContent = computerScore; 
 
+function gameOver() {
+    const results = document.querySelector(".results");
+        const gameOver = document.createElement("h2");
+        gameOver.textContent = "Game over!"
+        results.appendChild(gameOver);
+
+}
 
 
