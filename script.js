@@ -10,7 +10,9 @@ const uScore = document.createElement("p");
 const computer = document.querySelector(".computer > .score");
 const cScore = document.createElement("p");
 
-const board = document.querySelector(".buttons")
+const board = document.querySelector(".buttons");
+const startText = document.querySelector(".start > h3");
+const scores = document.querySelector(".scores");
 
 function getComputerChoice() {
     let choices = ["rock", "paper", "scissors"];
@@ -74,8 +76,12 @@ function playRound() {
 
 //Play a game until one player reach a score of 5
 function playGame() {
-    let maxScore = false;
-    
+    board.classList.toggle("inactive");
+    startBtn.classList.toggle("inactive");
+    startText.classList.toggle("inactive");
+    scores.classList.toggle("inactive");
+
+
     const buttons = document.querySelectorAll(".userChoice");
     buttons.forEach((btn) =>{
     btn.addEventListener("click", () => {
@@ -102,13 +108,12 @@ function gameOver() {
         const gameOver = document.createElement("h2");
         gameOver.textContent = "Game over!"
         results.appendChild(gameOver);
-        board.classList.toggle("inactive")
-        showResults()
+        board.classList.toggle("inactive");
+        showResults();
 
 }
 
 function scoreCheck() {
-    let maxScore = false;
     user.appendChild(uScore);
     uScore.textContent = userScore; 
     computer.appendChild(cScore);
@@ -117,5 +122,10 @@ function scoreCheck() {
         gameOver();
     }
 }
+
+const startBtn = document.querySelector(".startbtn");
+startBtn.addEventListener("click", () => {
+    playGame();
+});
 
 
