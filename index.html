@@ -9,17 +9,24 @@
     <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-    <div class = "scores">
-        <div class = "user">
-            <div class = "score"></div>
-            <p>Your score</p>
+    <h1>Rock paper scissors game</h1>
+    <div class = "container">
+        <div class ="start" >
+            <h3>Do you dare challenge a computer?</h3>
+            <button class = "startbtn" type = "button">New Game</button>
         </div>
-        <div class = "computer">
-            <div class = "score"></div>
-            <p>Computer score</p>
+        <div class = "scores inactive">
+            <div class = "user">
+                <div class = "score"></div>
+                <p>Your score</p>
+            </div>
+            <div class = "computer">
+                <div class = "score"></div>
+                <p>Computer score</p>
+            </div>
         </div>
     </div>
-    <div class = "buttons">
+    <div class = "buttons inactive">
         <button class = userChoice id = "btn1" type = "button">rock</button>
         <button class = userChoice id = "btn2" type = "button">paper</button>
         <button class = userChoice id = "btn3" type = "button">scissors</button>

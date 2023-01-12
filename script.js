@@ -84,7 +84,7 @@ function playGame() {
         scoreCheck();
         })
     })
-    
+}    
 
 //show results
 function showResults () {
