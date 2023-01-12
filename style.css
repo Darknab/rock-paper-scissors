@@ -16,6 +16,7 @@ h1 {
     margin: auto; 
     border-radius: 10px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -98,6 +99,11 @@ button {
     text-align: center;
     width: 100%;
     text-shadow: 2px 2px red;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
 }
 
 .inactive {

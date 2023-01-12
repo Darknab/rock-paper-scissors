@@ -14,6 +14,14 @@ const board = document.querySelector(".buttons");
 const startText = document.querySelector(".start > h3");
 const scores = document.querySelector(".scores");
 
+const results = document.querySelector(".results");
+const victory = document.createElement("p");
+victory.innerHTML = "Victory! <br> Congratulations, you won!";
+const defeat = document.createElement("p");
+defeat.innerHTML = "Defeat! <br> Shame on you! you lost against a stupid computer!!!";
+console.log(results)
+
+
 function getComputerChoice() {
     let choices = ["rock", "paper", "scissors"];
     let choiceNumber = Math.floor(Math.random() *3 );
@@ -70,7 +78,6 @@ function playRound() {
                    }
                 break;         
         }     
-
     
 }
 
@@ -80,7 +87,8 @@ function playGame() {
     startBtn.classList.toggle("inactive");
     startText.classList.toggle("inactive");
     scores.classList.toggle("inactive");
-
+    results.classList.add("inactive");
+    
 
     const buttons = document.querySelectorAll(".userChoice");
     buttons.forEach((btn) =>{
@@ -95,20 +103,24 @@ function playGame() {
 //show results
 function showResults () {
     if (userScore > computerScore) {
-        console.log("congratulations, you won!");
+        results.appendChild(victory);
+        console.log(results)
     }
     else if (userScore < computerScore) {
-        console.log("shame on you! you lost against a stupid computer!");
-}
+        results.appendChild(defeat);
+        console.log(results)
+    }
+    startBtn.classList.toggle("inactive");
 }
 
  
 function gameOver() {
-    const results = document.querySelector(".results");
+        results.classList.toggle("inactive")
         const gameOver = document.createElement("h2");
         gameOver.textContent = "Game over!"
         results.appendChild(gameOver);
         board.classList.toggle("inactive");
+        scores.classList.toggle("inactive");
         showResults();
 
 }
@@ -125,7 +137,7 @@ function scoreCheck() {
 
 const startBtn = document.querySelector(".startbtn");
 startBtn.addEventListener("click", () => {
+    userScore = 0;
+    computerScore = 0;
     playGame();
 });
-
-
