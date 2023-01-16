@@ -11,21 +11,28 @@
 <body>
     <h1>Rock paper scissors game</h1>
     <div class = "container">
-        <div class = "results"></div>
         <div class ="start" >
             <h3>Do you dare challenge the mighty computer?</h3>
-            <button class = "startbtn" type = "button">New Game</button>
         </div>
         <div class = "scores inactive">
             <div class = "user">
                 <div class = "score"></div>
                 <p>Your score</p>
             </div>
+            
             <div class = "computer">
                 <div class = "score"></div>
                 <p>Computer score</p>
             </div>
+            <div class ="round"></div>
         </div>
+        <div class = "results inactive">
+            <h3>Game Over!</h3>
+            <p class = "winner"></p>
+            <p>Play again?</p>
+        </div>
+        <button class = "startbtn" type = "button">New Game</button>
+
     </div>
     <div class = "buttons inactive">
         <button class = userChoice id = "btn1" type = "button">rock</button>

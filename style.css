@@ -35,7 +35,9 @@ h1 {
 .scores {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     width: 100%;
+    flex-basis: 100%;
 }
 
 button {
