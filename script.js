@@ -92,7 +92,6 @@ function playRound() {
         scoreText.appendChild(roundResult)
         showScore();
         userSelection = undefined;
-        return;
 }
 
 //Play a game until one player reach a score of 5
@@ -106,8 +105,8 @@ function playGame() {
                 round ++;
                 playRound();
             }
-            else btn.removeEventListener("click", gameOver());
-            return;
+            else gameOver();
+
             })
         })    
 }  
