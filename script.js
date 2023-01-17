@@ -1,8 +1,5 @@
-
 let computerSelection;
 let userSelection;
-
-
 let userScore = 0;
 let computerScore = 0;
 let round = 0;
@@ -18,10 +15,27 @@ const winner = document.querySelector(".winner")
 const board = document.querySelector(".buttons");
 const startText = document.querySelector(".start > h3");
 const scores = document.querySelector(".scores");
-
 const results = document.querySelector(".results");
 
+const startBtn = document.querySelector(".startbtn");
+startBtn.addEventListener("click", () => {
+    setNewGame();
+    showScore();
+    playGame();
+});
 
+function setNewGame() {
+    computerScore = 0;
+    userScore = 0;
+    round = 0;
+    roundNum.innerHTML = "";
+    roundResult.innerHTML = "";
+    board.classList.remove("inactive");
+    startBtn.classList.add("inactive");
+    startText.classList.add("inactive");
+    scores.classList.remove("inactive");
+    results.classList.add("inactive");
+}
 
 function getComputerChoice() {
     let choices = ["rock", "paper", "scissors"];
@@ -29,7 +43,6 @@ function getComputerChoice() {
     computerSelection = choices[choiceNumber];
     return computerSelection;
 }
-
 
 function playRound() {
         getComputerChoice();
@@ -77,21 +90,9 @@ function playRound() {
         roundNum.textContent = `Round ${round}`;    
         scoreText.appendChild(roundNum)
         scoreText.appendChild(roundResult)
-        scoreCheck();
-
-}
-
-function setNewGame() {
-    computerScore = 0;
-    userScore = 0;
-    round = 0;
-    roundNum.innerHTML = "";
-    roundResult.innerHTML = "";
-    board.classList.remove("inactive");
-    startBtn.classList.add("inactive");
-    startText.classList.add("inactive");
-    scores.classList.remove("inactive");
-    results.classList.add("inactive");
+        showScore();
+        userSelection = undefined;
+        return;
 }
 
 //Play a game until one player reach a score of 5
@@ -99,13 +100,24 @@ function playGame() {
         const buttons = document.querySelectorAll(".userChoice");
         buttons.forEach((btn) =>{
         btn.addEventListener("click", () => {
-            userSelection = btn.textContent;
-            round ++;
-            playRound();
+            let scoreLimit = (userScore === 5 || computerScore ===5 );
+            if (scoreLimit == false) {
+                userSelection = btn.textContent;
+                round ++;
+                playRound();
+            }
+            else btn.removeEventListener("click", gameOver());
+            return;
             })
-        })
-    
+        })    
 }  
+
+function showScore() {
+    user.appendChild(uScore);
+    uScore.textContent = userScore; 
+    computer.appendChild(cScore);
+    cScore.textContent = computerScore;
+}
 
 //show results
 function showResults () {
@@ -117,7 +129,6 @@ function showResults () {
     }
 }
 
- 
 function gameOver() {
         results.classList.toggle("inactive");
         board.classList.toggle("inactive");
@@ -126,20 +137,3 @@ function gameOver() {
         showResults();
 
 }
-
-function scoreCheck() {
-    user.appendChild(uScore);
-    uScore.textContent = userScore; 
-    computer.appendChild(cScore);
-    cScore.textContent = computerScore;
-    if (userScore === 5 || computerScore === 5) {
-        gameOver();
-    }
-}
-
-const startBtn = document.querySelector(".startbtn");
-startBtn.addEventListener("click", () => {
-    setNewGame();
-    scoreCheck();
-    playGame();
-});
