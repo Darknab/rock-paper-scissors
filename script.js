@@ -16,6 +16,8 @@ const board = document.querySelector(".buttons");
 const startText = document.querySelector(".start > h3");
 const scores = document.querySelector(".scores");
 const results = document.querySelector(".results");
+const buttons = document.querySelectorAll(".userChoice");
+
 
 const startBtn = document.querySelector(".startbtn");
 startBtn.addEventListener("click", () => {
@@ -96,7 +98,7 @@ function playRound() {
 
 //Play a game until one player reach a score of 5
 function playGame() {
-        const buttons = document.querySelectorAll(".userChoice");
+    
         buttons.forEach((btn) =>{
         btn.addEventListener("click", () => {
             let scoreLimit = (userScore === 5 || computerScore ===5 );
@@ -132,7 +134,7 @@ function gameOver() {
         results.classList.toggle("inactive");
         board.classList.toggle("inactive");
         scores.classList.toggle("inactive");
-        startBtn.classList.toggle("inactive");
         showResults();
-
+        const playAgain = document.querySelector(".playAgain");
+        playAgain.addEventListener("click", () => location.reload())
 }
