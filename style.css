@@ -62,13 +62,14 @@ h1 {
 
 .startbtn, .playAgain {
     background-color: red;
-    min-height: 100px;
-    min-width: 100px;
+    min-height: 120px;
+    min-width: 120px;
     border-radius: 50%;
     box-shadow: 2px 4px red;
     border: none;
     margin-bottom: 15%;
-    font-size: 18px;
+    font-size: 1.5rem;
+    font-weight: bold;
     padding: 6px;
 }
 
